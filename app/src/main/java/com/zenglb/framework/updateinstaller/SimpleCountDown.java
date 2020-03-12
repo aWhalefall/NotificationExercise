@@ -2,7 +2,8 @@ package com.zenglb.framework.updateinstaller;
 
 import android.app.NotificationManager;
 import android.os.CountDownTimer;
-import android.support.v4.app.NotificationCompat;
+
+import androidx.core.app.NotificationCompat;
 
 public class SimpleCountDown extends CountDownTimer {
 
