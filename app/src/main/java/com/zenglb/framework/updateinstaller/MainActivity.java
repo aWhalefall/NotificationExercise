@@ -2,11 +2,17 @@ package com.zenglb.framework.updateinstaller;
 
 import android.Manifest;
 import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.notification.demo.NotificationiActivity;
 
@@ -18,8 +24,6 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity  {
 
-
-
     private NotificationManager notificationManager;
 
     @Override
@@ -27,8 +31,11 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         notificationManager = NotificationDemo.getInstance().createNotificationChannel(this);
-    }
 
+        CustomBroad customBroad=new CustomBroad();
+        LocalBroadcastManager.getInstance(this).registerReceiver(customBroad,new IntentFilter("123"));
+
+    }
 
 
 
@@ -49,7 +56,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
     public void testNotification(View view) {
-        startActivity(new Intent(this, NotificationiActivity.class));
+       // startActivity(new Intent(this, NotificationiActivity.class));
 
 //        boolean judge=new Random().nextBoolean();
 //        if(judge){
@@ -68,7 +75,7 @@ public class MainActivity extends AppCompatActivity  {
         //跳转到指定的activity
         //  notificationManager.notify(NotificationDemo.CHANNEL_ID_INT + new Random().nextInt(3), NotificationDemo.getInstance().creatPendingIntent(this).build());
         //注册
-        //notificationManager.notify(NotificationDemo.CHANNEL_ID_INT,NotificationDemo.getInstance().creatPendingIntentAction(this).build());
+        notificationManager.notify(NotificationDemo.CHANNEL_ID_INT,NotificationDemo.getInstance().creatPendingIntentAction(this).build());
         //增加回复Action
 //        notificationManager.notify(NotificationDemo.CHANNEL_ID_INT,NotificationDemo.getInstance().AddReplayAction(this).build());
         //增加带进度条notifacation
@@ -95,5 +102,18 @@ public class MainActivity extends AppCompatActivity  {
         //聊天通知
 //        NotificationCompat.Builder builder = NotificationDemo.getInstance().creatMessageNotification(MainActivity.this);
 //        notificationManager.notify(NotificationDemo.CHANNEL_ID_INT, builder.build());
+
+        Intent intent =new Intent("123");
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+
+    }
+
+    public class CustomBroad extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            for (int i = 0; i < 10; i++) {
+                Log.v("","111111111111111111111111111111111111"+i);
+            }
+        }
     }
 }

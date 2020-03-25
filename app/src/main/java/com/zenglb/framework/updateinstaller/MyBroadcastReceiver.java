@@ -16,7 +16,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
             Toast.makeText(context, "reciver", Toast.LENGTH_SHORT).show();
         }
         try {
-            Intent demoIntent = new Intent(context, Main2Activity.class);
+            Intent demoIntent = new Intent(context, LocalBroadCaseExerciseActivity.class);
             demoIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(demoIntent);
         } catch (Exception e) {

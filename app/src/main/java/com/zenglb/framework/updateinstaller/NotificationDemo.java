@@ -1,6 +1,5 @@
 package com.zenglb.framework.updateinstaller;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -197,7 +196,7 @@ public class NotificationDemo {
      */
     public NotificationCompat.Builder creatImportMessage(Context context){
 
-        Intent fullScreenIntent = new Intent(context, Main2Activity.class);
+        Intent fullScreenIntent = new Intent(context, LocalBroadCaseExerciseActivity.class);
         PendingIntent fullScreenPendingIntent = PendingIntent.getActivity(context, 0,
                 fullScreenIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
