@@ -47,7 +47,7 @@ public class LocalBroadCaseExerciseActivity extends AppCompatActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent != null && LOCAL_ACTION.equals(intent.getAction())) {
-                Log.v("zxy", "222222222222222222");
+                Log.v("zxy", "收到通知");
             }
         }
     }

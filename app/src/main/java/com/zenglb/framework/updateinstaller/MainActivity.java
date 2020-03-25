@@ -34,10 +34,7 @@ public class MainActivity extends AppCompatActivity  {
 
         CustomBroad customBroad=new CustomBroad();
         LocalBroadcastManager.getInstance(this).registerReceiver(customBroad,new IntentFilter("123"));
-
     }
-
-
 
 
     /**

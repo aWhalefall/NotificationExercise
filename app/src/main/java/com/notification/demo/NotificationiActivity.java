@@ -22,20 +22,20 @@ public class NotificationiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notificationi);
 
 
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        RecyclerView recyclerView=findViewById(R.id.dialogRecycler);
+        RecyclerView recyclerView = findViewById(R.id.dialogRecycler);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        String[] strings= initData();
+        String[] strings = initData();
 
-        SimpleAdapter simpleAdapter=new SimpleAdapter(strings);
+        SimpleAdapter simpleAdapter = new SimpleAdapter(strings);
         recyclerView.setAdapter(simpleAdapter);
     }
 
     private String[] initData() {
 
-        String[] strings=new String[]{
+        String[] strings = new String[]{
                 "普通通知",
                 "多行文本Notification",
                 "跳转到指定的activity",
@@ -49,20 +49,23 @@ public class NotificationiActivity extends AppCompatActivity {
 
         return strings;
 
-    };
+    }
+
+    ;
 
 
-    public class  SimpleAdapter extends  RecyclerView.Adapter<SimpleAdapter.ViewHolder>{
+    public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.ViewHolder> {
 
         String[] strings;
+
         public SimpleAdapter(String[] strings) {
-            this.strings=strings;
+            this.strings = strings;
         }
 
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(NotificationiActivity.this).inflate(R.layout.activity_notificatioin,null));
+            return new ViewHolder(LayoutInflater.from(NotificationiActivity.this).inflate(R.layout.activity_notificatioin, null));
         }
 
         @Override
@@ -71,7 +74,7 @@ public class NotificationiActivity extends AppCompatActivity {
             holder.textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(NotificationiActivity.this, position+"",1000).show();
+                    Toast.makeText(NotificationiActivity.this, position + "", 1000).show();
                 }
             });
         }
@@ -81,12 +84,13 @@ public class NotificationiActivity extends AppCompatActivity {
             return strings.length;
         }
 
-        public  class  ViewHolder extends RecyclerView.ViewHolder{
+        public class ViewHolder extends RecyclerView.ViewHolder {
 
             public TextView textView;
+
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
-                textView=itemView.findViewById(R.id.update_mess_txt);
+                textView = itemView.findViewById(R.id.update_mess_txt);
             }
         }
     }
